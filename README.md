@@ -44,7 +44,7 @@ credit_score_project/
 
 ## Dataset :
 
-- **Source:** [Kaggle — Social Media User Behavior](https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data- **Source:** [Kaggle — Social Media User Behavior](https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data
+- **Source:** [Kaggle — Credit score classification](https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data- **Source:** [Kaggle — Social Media User Behavior](https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data
 
 
 
