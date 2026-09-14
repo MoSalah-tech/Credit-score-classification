@@ -45,6 +45,9 @@ credit_score_project/
 ## Dataset :
 
 - **Source:** [Kaggle — Credit score classification](https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data- **Source:** 
+- **Size:** ~100,000 rows, 28 columns
+- **Target:** `Credit_Score` (Good / Standard / Poor)
+- **License:** Not specified on Kaggle (check for commercial use)
 
 
 
