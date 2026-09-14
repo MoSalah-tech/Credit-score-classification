@@ -82,3 +82,39 @@ Each run logs:
 - ✅ Accuracy + Weighted F1 + per-class F1
 - ✅ Confusion matrix PNG as artifact
 - ✅ Trained model artifact (loadable with `mlflow.xgboost.load_model`)
+
+
+
+## 🚀 How to run :
+```shell
+pip install -r requirements.txt
+# drop train.csv into data/
+python main.py --trials 30
+
+# view MLflow
+mlflow ui --backend-store-uri mlflow_runs
+
+# run tests
+pytest tests/
+```
+
+## 📊 Results
+```text
+Model	Accuracy	F1 Weighted
+XGBoost	0.7971	0.7967
+LightGBM	0.7961	0.7959
+```
+XGBoost wins — but honestly it's basically a tie, only 0.001 difference.
+
+### Per-class breakdown (XGBoost)
+```text
+Class	F1
+Standard	0.814 — easiest, most data
+Poor	0.798 — solid
+Good	0.744 — hardest, least data (class imbalance)
+```
+![Confusion Matrix XGBoost](outputs/plots/confusion_matrix_xgboost.png)
+
+![Confusion Matrix LightGBM](outputs/plots/confusion_matrix_lightgbm.png)
+
+

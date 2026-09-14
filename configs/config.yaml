@@ -25,7 +25,7 @@ training:
 
 mlflow:
   experiment_name: "Credit_Score_Classification"
-  tracking_uri: "mlflow_runs"        # local folder; change to a server URI if needed
+  tracking_uri: "sqlite:///mlflow_runs/mlflow.db"        # local folder; change to a server URI if needed
 
 outputs:
   plots_dir: "outputs/plots"
