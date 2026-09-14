@@ -13,5 +13,5 @@ venv/
 .venv/
 
 # Outputs (optional — commit reports but not plots)
-outputs/plots/
+
 *.log
