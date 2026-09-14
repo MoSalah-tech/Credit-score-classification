@@ -42,6 +42,12 @@ credit_score_project/
 └── .gitignore
 ```
 
+## Dataset :
+
+- **Source:** [Kaggle — Social Media User Behavior](https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data- **Source:** [Kaggle — Social Media User Behavior](https://www.kaggle.com/datasets/parisrohan/credit-score-classification/data
+
+
+
 
 ## XGBoost vs LightGBM
 
