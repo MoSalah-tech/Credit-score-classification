@@ -42,28 +42,6 @@ credit_score_project/
 └── .gitignore
 ```
 
-## Quickstart
-
-```bash
-# 1. Install dependencies
-pip install -r requirements.txt
-
-# 2. Download dataset from Kaggle and place train.csv in data/
-#    https://www.kaggle.com/datasets/parisrohan/credit-score-classification
-
-# 3. Run the full pipeline
-python main.py
-
-# Optional overrides
-python main.py --data data/train.csv --trials 50
-
-# 4. View results in MLflow UI
-mlflow ui --backend-store-uri mlflow_runs
-# Open http://127.0.0.1:5000
-
-# 5. Run tests
-pytest tests/
-```
 
 ## XGBoost vs LightGBM
 
