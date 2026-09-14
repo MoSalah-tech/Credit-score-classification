@@ -1,0 +1,17 @@
+# Data — never commit raw data
+data/
+
+# MLflow local runs
+mlflow_runs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.venv/
+
+# Outputs (optional — commit reports but not plots)
+outputs/plots/
+*.log

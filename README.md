@@ -1,1 +1,84 @@
-# Credit-score-classification
+# Credit Score Classification 🏦
+
+Multi-class classification pipeline predicting customer credit score bands
+(**Good / Standard / Poor**) using XGBoost and LightGBM, tuned with Optuna,
+and tracked with MLflow.
+
+## Project Structure
+
+```
+credit_score_project/
+├── configs/
+│   └── config.yaml           # All settings in one place
+├── data/
+│   └── train.csv             # Download from Kaggle (not committed)
+├── src/
+│   ├── data/
+│   │   ├── loader.py         # Load raw CSV
+│   │   └── cleaner.py        # Fix dirty values, impute nulls
+│   ├── features/
+│   │   ├── encoder.py        # Label encode target + categoricals
+│   │   └── splitter.py       # Stratified train/test split
+│   ├── models/
+│   │   ├── tuner.py          # Optuna objectives for both models
+│   │   ├── xgboost_model.py  # XGBoost build + train
+│   │   └── lightgbm_model.py # LightGBM build + train
+│   ├── evaluation/
+│   │   ├── metrics.py        # Accuracy, F1, per-class F1
+│   │   └── visualizer.py     # Confusion matrix plots
+│   └── utils/
+│       ├── logger.py         # Centralised logging
+│       └── mlflow_utils.py   # MLflow helpers
+├── tests/
+│   ├── test_cleaner.py
+│   ├── test_encoder.py
+│   └── test_models.py
+├── outputs/
+│   ├── plots/                # Confusion matrix PNGs
+│   └── reports/
+├── mlflow_runs/              # Local MLflow tracking store
+├── main.py                   # ← Run this
+├── requirements.txt
+└── .gitignore
+```
+
+## Quickstart
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Download dataset from Kaggle and place train.csv in data/
+#    https://www.kaggle.com/datasets/parisrohan/credit-score-classification
+
+# 3. Run the full pipeline
+python main.py
+
+# Optional overrides
+python main.py --data data/train.csv --trials 50
+
+# 4. View results in MLflow UI
+mlflow ui --backend-store-uri mlflow_runs
+# Open http://127.0.0.1:5000
+
+# 5. Run tests
+pytest tests/
+```
+
+## XGBoost vs LightGBM
+
+| | XGBoost | LightGBM |
+|---|---|---|
+| Tree growth | Level-wise | Leaf-wise |
+| Speed | Slower | Much faster |
+| Overfit risk | Lower | Higher (needs regularization) |
+| Extra key param | `max_depth` | `num_leaves` |
+| Best for | Safer baseline | Large data (like this 100K dataset) |
+
+## MLflow Tracking
+
+Each run logs:
+- ✅ Best hyperparameters (from Optuna)
+- ✅ Accuracy + Weighted F1 + per-class F1
+- ✅ Confusion matrix PNG as artifact
+- ✅ Trained model artifact (loadable with `mlflow.xgboost.load_model`)

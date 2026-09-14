@@ -1,0 +1,32 @@
+# ============================================================
+# Project Configuration — Credit Score Classification
+# ============================================================
+
+data:
+  train_path: "data/train.csv"
+  test_size: 0.2
+  random_state: 42
+  drop_columns:
+    - ID
+    - Customer_ID
+    - Name
+    - SSN
+    - Month
+
+features:
+  target_column: "Credit_Score"
+  numeric_fill_strategy: "median"   # median | mean
+  categorical_fill_strategy: "mode"
+
+training:
+  n_trials: 30                       # Optuna trials per model
+  cv_folds: 3
+  scoring: "f1_weighted"
+
+mlflow:
+  experiment_name: "Credit_Score_Classification"
+  tracking_uri: "mlflow_runs"        # local folder; change to a server URI if needed
+
+outputs:
+  plots_dir: "outputs/plots"
+  reports_dir: "outputs/reports"
