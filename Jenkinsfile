@@ -62,7 +62,11 @@ pipeline {
     post {
         always {
             // Clean up the workspace after the pipeline run
+            try{
             cleanWs()
+            } catch (Exception e) {
+                echo "Workspace cleanup failed: ${e.getMessage()}"
+            }
         }
         success {
             echo 'Pipeline succeeded! Model trained and artifacts archived.'
