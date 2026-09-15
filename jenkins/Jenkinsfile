@@ -1,4 +1,4 @@
-$jenkinsfile = @'
+$jenkinsfile = 
 pipeline {
     agent any
 
@@ -38,6 +38,3 @@ pipeline {
         }
     }
 }
-'@
-
-[System.IO.File]::WriteAllText("$PWD\Jenkinsfile", $jenkinsfile)
